@@ -1,1 +1,7 @@
 boto3 #minio
+elasticsearch~=8.19.0
+dotenv
+kafka-python
+pdf2image
+pdfplumber
+PyMuPDF

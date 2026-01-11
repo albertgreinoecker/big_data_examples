@@ -50,7 +50,7 @@ s3.put_object(
 )
 
 ############################################
-# Holen und wieder hochladen
+# retrieve and update metadata, then re-upload
 
 obj = s3.get_object(
     Bucket="test-bucket",
@@ -70,3 +70,32 @@ s3.put_object(
     }
 )
 
+############################################
+# Delete Object
+
+
+# Without versioning, object is simply deleted
+s3.delete_object(
+    Bucket="test-bucket",
+    Key="direct_text.txt"
+)
+
+
+# With versioning, a delete marker is created
+s3.delete_object(
+    Bucket="test-bucket",
+    Key="direct_text.txt"
+)
+
+# To permanently delete, need to specify version ID
+s3.delete_object(
+    Bucket="test-bucket",
+    Key="direct_text.txt",
+    VersionId="VERSION_ID_HIER"
+)
+
+# List all Versions of an Object
+resp = s3.list_object_versions(Bucket="test-bucket")
+
+for v in resp.get("Versions", []):
+    print("KEY", v["Key"], "VERSION:", v["VersionId"], "LATEST:", v["IsLatest"])
