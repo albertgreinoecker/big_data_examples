@@ -1,5 +1,16 @@
 import boto3
 
+'''
+docker run -d \
+	--name minio \
+	-p 9000:9000 \
+	-p 9001:9001 \
+	-e MINIO_ROOT_USER=minioadmin \
+	-e MINIO_ROOT_PASSWORD=minioadmin \
+	-v minio_data:/data \
+	minio/minio server /data --console-address ":9001". 
+'''
+
 s3 = boto3.client(
     "s3",
     endpoint_url="http://localhost:9000",
