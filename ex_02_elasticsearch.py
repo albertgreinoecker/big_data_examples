@@ -2,6 +2,15 @@ from elasticsearch import Elasticsearch
 from dotenv import load_dotenv
 import os
 
+'''
+docker run -d \
+	--name es \
+	-p 9200:9200 \
+	-e "discovery.type=single-node" \
+	-e "xpack.security.enabled=false" \
+	docker.elastic.co/elasticsearch/elasticsearch:8.11.0
+'''
+
 load_dotenv()
 
 user = os.getenv('ELASTIC_USER')
