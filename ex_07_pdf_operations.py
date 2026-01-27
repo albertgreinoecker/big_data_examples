@@ -107,8 +107,23 @@ for page_number, page in enumerate(doc):
         if block["type"] == 0:  # Textblock
             for line in block["lines"]:
                 for span in line["spans"]: #Ein Span ist ein zusammenhängender Textbereich mit exakt gleichen Texteigenschaften
-                    print(
-                        span["text"],
-                        span["bbox"]  # (x0, y0, x1, y1)
-                    )
+                    print(span)
 
+
+
+'''
+{
+ 'size': 11.9671,               # Schriftgröße, Achtung Rundungsfehler
+ 'flags': 4,                    # Textattribute (kursiv=1, fett=2, , unterstrichen, etc.)
+ 'bidi': 0,                     # bidirektionaler Text (0=normal, 1=umgekehrt)  
+ 'char_flags': 16,
+ 'font': 'TeXPalladioL-SC',     # Schriftart: SC = Small Caps
+ 'color': 0,                    # Farbwert im RGB-Format (0=schwarz)    
+ 'alpha': 255,                  # Transparenz (255=undurchsichtig)
+ 'ascender': 0.487,             # Abstand von Grundlinie bis zur Oberkante 
+ 'descender': -0.006,           # Abstand von Grundlinie bis zur Unterkante
+ 'text': '2024',
+ 'origin': (155.343, 311.352),  # Ursprungspunkt (linke untere Ecke)
+ 'bbox': (155.343, 299.530, 179.301, 311.498) # Begrenzungsrahmen (x0, y0, x1, y1)
+}
+'''
